@@ -4,7 +4,9 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+    search_word = params[:search_word] || ''
+
+    @books = Book.search { keywords search_word }.results
   end
 
   # GET /books/1

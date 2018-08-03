@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'rspec', '~> 3.7'
 gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
 gem 'bullet', '~> 5.7', '>= 5.7.5'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

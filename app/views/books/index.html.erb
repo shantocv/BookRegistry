@@ -1,37 +1,59 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Books</h1>
+<header>
+  <div class="nav">
+    <h1>  Books </h1>
+  </div>
+</header>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Author</th>
-      <th>Isbn</th>
-      <th>Price</th>
-      <th>Category</th>
-      <th>Publish</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @books.each do |book| %>
-      <tr>
-        <td><%= book.name %></td>
-        <td><%= book.author %></td>
-        <td><%= book.isbn %></td>
-        <td><%= book.price %></td>
-        <td><%= book.category %></td>
-        <td><%= book.publish %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="search">
+  <div>
+    <%= form_tag("/books", method: "get") do %>
+      <%= label_tag(:search_word, "Search for:") %>
+      <%= text_field_tag(:search_word) %>
+      <%= submit_tag("Search") %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <div>
+    <div>Filter By</div>
+    <div>
+      <select>
+        <option>Name</option>
+      </select>
+    </div>
+  </div>  
+</div>
 
-<br>
+<div class="books">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Isbn</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Publish</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
 
-<%= link_to 'New Book', new_book_path %>
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= book.name %></td>
+          <td><%= book.author %></td>
+          <td><%= book.isbn %></td>
+          <td><%= book.price %></td>
+          <td><%= book.category %></td>
+          <td><%= book.publish %></td>
+          <td><%= link_to 'Show', book %></td>
+          <td><%= link_to 'Edit', edit_book_path(book) %></td>
+          <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'New Book', new_book_path %>
+</div>
