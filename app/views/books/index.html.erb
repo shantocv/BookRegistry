@@ -15,11 +15,9 @@
     <% end %>
   </div>
   <div>
-    <div>Filter By</div>
+    <div>Sort By</div>
     <div>
-      <select>
-        <option>Name</option>
-      </select>
+      <%= select_tag :filter, options_for_select([['Name','name'], ['Author', 'author'], ['ISBN','isbn'],['Price','price'],['Category','category'], ['Status','status']]) %>
     </div>
   </div>  
 </div>
