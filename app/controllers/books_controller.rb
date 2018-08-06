@@ -4,9 +4,14 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    search_word = params[:search_word] || ''
+    @search_word = params[:search_word] || ''
+    word = @search_word
 
-    @books = Book.search { keywords search_word }.results
+    @sort_by = params[:filter]
+
+    @books = Book.search do 
+      fulltext word
+    end.results.sort_by {|data| data.send(@sort_by) }
   end
 
   # GET /books/1

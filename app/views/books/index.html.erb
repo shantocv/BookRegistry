@@ -10,16 +10,18 @@
   <div>
     <%= form_tag("/books", method: "get") do %>
       <%= label_tag(:search_word, "Search for:") %>
-      <%= text_field_tag(:search_word) %>
-      <%= submit_tag("Search") %>
+      <%= text_field_tag(:search_word, @search_word) %>
+      <div>
+        <div>Sort By</div>
+        <div>
+          <%= select_tag :filter, options_for_select([['Name','name'], ['Author', 'author'], ['ISBN','isbn'],['Price','price'],['Category','category'], ['Status','publish']], @sort_by) %>
+        </div>
+      </div>        
+      <div>
+        <%= submit_tag("Submit") %>
+      </div>
     <% end %>
   </div>
-  <div>
-    <div>Sort By</div>
-    <div>
-      <%= select_tag :filter, options_for_select([['Name','name'], ['Author', 'author'], ['ISBN','isbn'],['Price','price'],['Category','category'], ['Status','status']]) %>
-    </div>
-  </div>  
 </div>
 
 <div class="books">
